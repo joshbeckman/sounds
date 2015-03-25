@@ -1,7 +1,6 @@
 (function(window, document, soundsLike){
     window.addEventListener('load', onload, false);
     window.soundsLike = soundsLike || {};
-    window.soundsLike.query = parseQuery(window.location.href);
 
     function onload(){
         window.soundsLike.socket = io();
@@ -9,27 +8,22 @@
             urlParams.id || 'record',
             record
         );
+        if (urlParams.id) {
+            document.querySelector('div').innerHTML = 
+                "<a href='" + window.location.href + "'>" + urlParams.id + "</a>";
+        }
     }
     function record(data){
-        window.soundsLike.startTone(
+        var i = window.soundsLike.startTone(
             data.tone || 432
         );
         setTimeout(
             window.soundsLike.stopTone,
-            data.msec || 500
+            data.msec || 500,
+            i
         );
         document.body.style.background = 
             'hsl(' + (data.tone || 432) % 360 + ',100%,50%)';
-    }
-
-    function parseQuery(qstr) {
-        var query = {};
-        var a = qstr.split('&');
-        for (var i in a){
-            var b = a[i].split('=');
-            query[decodeURIComponent(b[0])] = decodeURIComponent(b[1]);
-        }
-        return query;
     }
 })(this, this.document, this.soundsLike);
 

@@ -1,4 +1,3 @@
-
 /*
  * Common tools for use with WebAudio.
  * 
