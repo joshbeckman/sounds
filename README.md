@@ -10,7 +10,7 @@ Sounds Like
     - Anyone can listen with this URL
 - Record data as sound by issuing a `GET` request to http://sounds.andjosh.com/record?id=foo
 
-Other available paramters:
+Other available parameters:
 - `tone`
     - Set to any floating number
 - `msec`
@@ -18,3 +18,4 @@ Other available paramters:
 
 ### Pleasant Tone Groups
 - 392, 261.63, 329.63
+- [Close Encounters](http://www.ars-nova.com/Theory%20Q&A/Q35.html)

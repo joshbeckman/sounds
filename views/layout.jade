@@ -11,6 +11,7 @@ html(lang="en")
     meta(name="apple-mobile-web-app-capable", content="yes")
     meta(name="msapplication-TileColor", content="#ffffff")
     link(href='http://fonts.googleapis.com/css?family=Raleway:100', rel='stylesheet', type='text/css')
+    link(rel="shortcut icon", href="/favicon.png")
     script.
       (function(g,a,t,r,a,c,k){g[r]=g[r]||{};g[r][a]=t.getTime();g[r][c]=[];g[c]=function(m,u,l,c,e){this.gatrack.onerror.push([m,u,l,c,e])}})(window,document,(new Date()),'gatrack','timer','onerror');
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'XXXXXXXXXXX', 'auto');ga('send', 'pageview');
@@ -20,14 +21,16 @@ html(lang="en")
                -moz-transition: 0.4s background;
                 -ms-transition: 0.4s background;
                     transition: 0.4s background;
-            font-family: sans-serif;
             text-align: center;
+            font-family: 'Raleway', sans-serif;
         }
         h1{
-            font-family: 'Raleway';
             font-weight: 100;
             padding-top: 20%;
             text-transform: uppercase;
+        }
+        a{
+            color: black;
         }
 
   body
