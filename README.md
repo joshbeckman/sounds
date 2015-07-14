@@ -20,3 +20,4 @@ Other available parameters:
 - 392, 261.63, 329.63
 - [Close Encounters](http://www.ars-nova.com/Theory%20Q&A/Q35.html)
     - 293.66, 329.63, 261.63, 130.81, 196
+[Tone reference](http://www.phy.mtu.edu/~suits/notefreqs.html)
