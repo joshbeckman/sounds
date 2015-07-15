@@ -1,5 +1,6 @@
 (function(window, document, soundsLike) {
-    var h1 = document.querySelector('h1');
+    var h1 = document.querySelector('h1'),
+        encounters = [293.66, 329.63, 261.63, 130.81, 196];
 
     window.addEventListener('load', onload, false);
     window.soundsLike = soundsLike || {};
@@ -20,7 +21,10 @@
 
     function record(data) {
         var i = window.soundsLike.startTone(
-            data.tone || 432
+            data.tone ||
+            encounters[
+                Math.floor(Math.random() * encounters.length)
+            ]
         );
 
         setTimeout(
