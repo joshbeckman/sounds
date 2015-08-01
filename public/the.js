@@ -1,5 +1,6 @@
 (function(window, document, soundsLike) {
     var h1 = document.querySelector('h1'),
+        p = document.querySelector('p'),
         encounters = [293.66, 329.63, 261.63, 130.81, 196];
 
     window.addEventListener('load', onload, false);
@@ -34,7 +35,7 @@
         );
         document.body.style.background =
             'hsl(' + (data.tone || 432) % 360 + ',100%,50%)';
-        console.log('tone', data.tone, 'for', data.msec, 'ms');
+        data.msg && p.textContent = data.msg;
     }
 })(this, this.document, this.soundsLike);
 
