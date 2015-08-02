@@ -35,7 +35,8 @@
         );
         document.body.style.background =
             'hsl(' + (data.tone || 432) % 360 + ',100%,50%)';
-        data.msg && p.textContent = data.msg;
+        if (data.msg)
+            p.textContent = data.msg;
     }
 })(this, this.document, this.soundsLike);
 
