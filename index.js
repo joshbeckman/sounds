@@ -5,7 +5,6 @@ var koa         = require('koa.io'),
     koaBody     = require('koa-better-body'),
     path        = require('path'),
     staticCache = require('koa-static-cache'),
-    globals     = require('./globals'),
     app         = koa(),
     port        = process.env.PORT || process.env.NODE_PORT || 3001;
 
