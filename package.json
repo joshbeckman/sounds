@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha --harmony",
-    "start": "node --harmony index.js"
+    "start": "node index.js"
   },
   "engines": {
-    "node": "0.12.0"
+    "node": "5.4.0"
   },
   "repository": {
     "type": "git",
