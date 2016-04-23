@@ -10,7 +10,6 @@ html(lang="en")
     meta(name="HandheldFriendly", content="true")
     meta(name="apple-mobile-web-app-capable", content="yes")
     meta(name="msapplication-TileColor", content="#ffffff")
-    link(href='http://fonts.googleapis.com/css?family=Raleway:100', rel='stylesheet', type='text/css')
     link(rel="shortcut icon", href="/favicon.png")
     script.
       (function(g,a,t,r,a,c,k){g[r]=g[r]||{};g[r][a]=t.getTime();g[r][c]=[];g[c]=function(m,u,l,c,e){this.gatrack.onerror.push([m,u,l,c,e])}})(window,document,(new Date()),'gatrack','timer','onerror');
@@ -22,21 +21,21 @@ html(lang="en")
                 -ms-transition: 0.4s background;
                     transition: 0.4s background;
             text-align: center;
-            font-family: 'Raleway', sans-serif;
+            font-family: Futura, sans-serif;
         }
         h1{
-            font-weight: 100;
+            font-weight: lighter;
             padding-top: 20%;
             text-transform: uppercase;
         }
         a{
-            color: black;
+            text-decoration: none;
         }
 
   body
     block content
 
     script(src='/socket.io/socket.io.js')
-    script(src="/webAudio.js")      
-    script(src="/the.js")      
-    script(src="/sounds.js")      
+    script(src="/webAudio.js")
+    script(src="/the.js")
+    script(src="/sounds.js")
