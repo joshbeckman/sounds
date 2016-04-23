@@ -22,7 +22,7 @@ window.soundsLike = window.soundsLike || { urlParams: null };
         .addEventListener('load', onload, false);
 
     function onload() {
-        window.soundsLike.socket = window.io('/' + (urlParams.id || ''));
+        window.soundsLike.socket = window.io('/' + (urlParams.id || '').toLowerCase());
         window.soundsLike.socket.on('sound', record);
         if (urlParams.id) {
             h1.innerHTML = urlParams.id + '<br>' + h1.innerText;

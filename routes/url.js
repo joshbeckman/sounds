@@ -13,7 +13,7 @@ module.exports = function (app, route){
     app.use(route.get('/record', function* () {
         this.status = 102;
 
-        app.io.of('/' + (this.query.id || ''))
+        app.io.of('/' + (this.query.id || '').toLowerCase())
         .emit('sound', this.query);
 
         this.type = 'image/svg+xml';
