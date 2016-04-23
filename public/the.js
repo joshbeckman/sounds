@@ -25,11 +25,7 @@ window.soundsLike = window.soundsLike || { urlParams: null };
         window.soundsLike.socket = window.io('/' + (urlParams.id || ''));
         window.soundsLike.socket.on('sound', record);
         if (urlParams.id) {
-            h1.innerHTML =
-                '<a href="">' +
-                    urlParams.id +
-                '</a><br>' +
-                h1.innerText;
+            h1.innerHTML = urlParams.id + '<br>' + h1.innerText;
             document.title = urlParams.id + ' Sounds';
         }
     }
