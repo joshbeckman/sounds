@@ -35,7 +35,7 @@ html(lang="en")
   body
     block content
 
-    script(src='/socket.io/socket.io.js')
+    script#socketScript(src='/socket.io/socket.io.js', async)
     script(src="/webAudio.js")
     script(src="/the.js")
     script(src="/sounds.js")
