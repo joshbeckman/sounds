@@ -26,7 +26,7 @@ window.soundsLike = window.soundsLike || { urlParams: null };
         window.soundsLike.socket.on('sound', record);
         if (urlParams.id) {
             h1.innerHTML =
-                '<a href="' + window.location.href + '>' +
+                '<a href="">' +
                     urlParams.id +
                 '</a><br>' +
                 h1.innerText;
