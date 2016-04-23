@@ -6,6 +6,7 @@ var koa         = require('koa.io'),
     path        = require('path'),
     staticCache = require('koa-static-cache'),
     app         = koa(),
+    pkg         = require('./package'),
     port        = process.env.PORT || process.env.NODE_PORT || 3001;
 
 app.use(compress());
@@ -24,6 +25,7 @@ app.use(jade.middleware({
 
 app.use(function *(next){
     var start = new Date;
+    this.set('x-' + pkg.name + '-version', pkg.version);
     yield next;
     var ms = new Date - start;
     console.log('%s %s - %sms', this.method, this.url, ms);
