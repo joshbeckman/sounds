@@ -1,14 +1,14 @@
 Sounds Like
 ===
-[sounds.andjosh.com](http://sounds.andjosh.com)
+[sounds.andjosh.com](https://sounds.andjosh.com)
 
 ### Steps
 - Open the home page with any `id` as a query parameter
-    - http://sounds.andjosh.com?id=foo
+    - https://sounds.andjosh.com?id=foo
     - Keep it open 
     - This will produce lively tones
     - Anyone can listen with this URL
-- Record data as sound by issuing a `GET` request to http://sounds.andjosh.com/record?id=foo
+- Record data as sound by issuing a `GET` request to https://sounds.andjosh.com/record?id=foo
 
 Other available parameters:
 - `tone`
