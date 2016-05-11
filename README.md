@@ -1,4 +1,4 @@
-Sounds Like
+Sounds
 ===
 Instead of staring at charts all day, waiting for numbers to change, why not listen for the difference? [Read more](http://www.andjosh.com/2015/02/17/analyzing-data-through-sound/).
 
@@ -24,3 +24,6 @@ Other optional parameters:
     - `293.66`, `329.63`, `261.63`, `130.81`, `196`
 
 [Tone reference](http://www.phy.mtu.edu/~suits/notefreqs.html)
+
+### Sites using Sounds
+- [Narro](https://narro.co)
