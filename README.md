@@ -1,5 +1,7 @@
 Sounds
 ===
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/656b8fd84df945279df806fdcd70ab65)](https://www.codacy.com/app/email_3/sounds?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andjosh/sounds&amp;utm_campaign=Badge_Grade)
+
 Instead of staring at charts all day, waiting for numbers to change, why not listen for the difference? [Read more](http://www.andjosh.com/2015/02/17/analyzing-data-through-sound/).
 
 ### Steps
