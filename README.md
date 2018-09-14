@@ -19,6 +19,8 @@ Other optional parameters:
     - Set to any integer for milliseconds of play for the tone
 - `msg`
     - Set a display message on the listener page
+- `hue`
+    - Set a specific background hue on the listener page
 
 ### Pleasant Tone Groups
 - `392`, `261.63`, `329.63`
