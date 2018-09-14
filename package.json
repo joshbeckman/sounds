@@ -7,9 +7,6 @@
     "test": "node_modules/mocha/bin/mocha --harmony",
     "start": "node index.js"
   },
-  "engines": {
-    "node": "5.4.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/andjosh/sounds.git"
