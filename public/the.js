@@ -19,9 +19,6 @@ window.soundsLike = window.soundsLike || { urlParams: null };
         urlParams = window.soundsLike.urlParams;
     var synth = new window.Tone.Synth().toMaster();
 
-    document.querySelector('#socketScript')
-        .addEventListener('load', onload, false);
-
     function onload() {
         window.soundsLike.socket = window.io('/' + (urlParams.id || '').toLowerCase());
         window.soundsLike.socket.on('sound', record);
@@ -30,6 +27,7 @@ window.soundsLike = window.soundsLike || { urlParams: null };
             document.title = urlParams.id + ' Sounds';
         }
     }
+    onload();
 
     function record(data) {
         var tone = data.tone || randomEncounter();

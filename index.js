@@ -1,38 +1,27 @@
-var koa         = require('koa.io'),
-    compress    = require('koa-compress'),
-    jade        = require('koa-jade'),
-    route       = require('koa-route'),
-    koaBody     = require('koa-better-body'),
-    path        = require('path'),
-    staticCache = require('koa-static-cache'),
-    app         = koa(),
-    pkg         = require('./package'),
-    port        = process.env.PORT || process.env.NODE_PORT || 3001;
+var Koa         = require('koa');
+var IO          = require('koa-socket');
+var route       = require('koa-route');
+var path        = require('path');
+var koaStatic   = require('koa-static');
+var app         = new Koa();
+var io          = new IO();
+var pkg         = require('./package');
+var port        = process.env.PORT || process.env.NODE_PORT || 3001;
+var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1" title="sounds.andjosh.com"></svg>';
 
-app.use(compress());
-app.use(staticCache(path.join(__dirname, 'public')));
-app.use(koaBody({
-    formLimit: (15 * 10e7),
-    jsonLimit: (15 * 10e7)
+app.use(koaStatic(path.join(__dirname, 'public')));
+io.attach(app);
+
+app.use(route.get('/record', (ctx) => {
+    ctx.status = 102;
+
+    app._io.of('/' + (ctx.query.id || '').toLowerCase())
+        .emit('sound', ctx.query);
+
+    ctx.type = 'image/svg+xml';
+    ctx.body = svg;
+    ctx.status = 200;
 }));
-
-app.use(jade.middleware({
-    viewPath: __dirname + '/views',
-    debug: false,
-    pretty: false,
-    compileDebug: false
-}));
-
-app.use(function *(next){
-    var start = new Date;
-    this.set('x-' + pkg.name + '-version', pkg.version);
-    yield next;
-    var ms = new Date - start;
-    console.log('%s %s - %sms', this.method, this.url, ms);
-});
-
-require('./routes/io')(app);
-require('./routes/url')(app, route);
 
 app.listen(port);
-console.info('listening on', port);
+console.info('%s listening on %s', pkg.name, port);
