@@ -24,4 +24,3 @@ app.use(route.get('/record', (ctx) => {
 }));
 
 app.listen(port);
-console.info('%s listening on %s', pkg.name, port);
