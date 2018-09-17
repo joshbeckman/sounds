@@ -30,4 +30,3 @@ app.use(route.get('/file', async (ctx) => {
 }));
 
 app.listen(port);
-console.info('%s listening on %s', pkg.name, port);
