@@ -3,6 +3,8 @@ var IO          = require('koa-socket');
 var route       = require('koa-route');
 var path        = require('path');
 var koaStatic   = require('koa-static');
+var request     = require('request');
+var req         = require('util').promisify(request);
 var app         = new Koa();
 var io          = new IO();
 var pkg         = require('./package');
@@ -21,6 +23,10 @@ app.use(route.get('/record', (ctx) => {
     ctx.type = 'image/svg+xml';
     ctx.body = svg;
     ctx.status = 200;
+}));
+
+app.use(route.get('/file', async (ctx) => {
+    ctx.body = await req.get(ctx.request.query.src);
 }));
 
 app.listen(port);

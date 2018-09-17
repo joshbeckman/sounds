@@ -21,6 +21,9 @@ Other optional parameters:
     - Set a display message on the listener page
 - `hue`
     - Set a specific background hue on the listener page
+- `src`
+    - Play the specified source file/URL *instead of a tone.
+    - Here's a [sound library](https://developers.google.com/actions/tools/sound-library/)
 
 ### Pleasant Tone Groups
 - `392`, `261.63`, `329.63`
