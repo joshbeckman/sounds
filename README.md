@@ -15,8 +15,6 @@ Instead of staring at charts all day, waiting for numbers to change, why not lis
 Other optional parameters:
 - `tone`
     - Set to any floating number
-- `chord`
-    - Set of comma-separated tone values to play as chord
 - `msec`
     - Set to any integer for milliseconds of play for the tone
 - `msg`
