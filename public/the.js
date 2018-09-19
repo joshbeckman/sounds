@@ -31,7 +31,9 @@ window.soundsLike = window.soundsLike || { urlParams: null };
 
     function record(data) {
         var tone = data.tone || randomEncounter();
+        var chord = (data.chord || '').split(',');
         var sec = (data.msec || 500) / 1000;
+        tone = chord.length ? chord : tone;
 
         if (data.src) {
             new window.Tone.Player({
