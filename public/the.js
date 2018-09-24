@@ -17,7 +17,6 @@ window.soundsLike = window.soundsLike || { urlParams: null };
         p = document.querySelector('p'),
         encounters = [293.66, 329.63, 261.63, 130.81, 196],
         urlParams = window.soundsLike.urlParams;
-    var synth = new window.Tone.Synth().toMaster();
 
     function onload() {
         window.soundsLike.socket = window.io('/' + (urlParams.id || '').toLowerCase());
@@ -32,12 +31,14 @@ window.soundsLike = window.soundsLike || { urlParams: null };
     function record(data) {
         var tone = data.tone || randomEncounter();
         var sec = (data.msec || 500) / 1000;
+        var synth;
 
         if (data.src) {
             new window.Tone.Player({
                 url : '/file?src=' + data.src, autostart: true
             }).toMaster();
         } else {
+            synth = new window.Tone.Synth().toMaster();
             synth.triggerAttackRelease(tone, sec);
         }
         document.body.style.background =
