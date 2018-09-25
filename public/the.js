@@ -1,4 +1,50 @@
 window.soundsLike = window.soundsLike || { urlParams: null };
+(function(window, document) {
+    // ref: https://github.com/0xfe/vexflow/wiki/Animation-with-VexFlow-&-CSS
+    var VF = window.Vex.Flow;
+    var renderer = new VF.Renderer(document.querySelector('.vf-inner'),
+        VF.Renderer.Backends.SVG);
+    var vfWidth = window.innerWidth / 2;
+    renderer.resize(vfWidth, 500);
+    var context = renderer.getContext();
+    var tickContext = new VF.TickContext();
+    var stave = new VF.Stave(10, 10, 10000)
+        .addClef('treble');
+    stave.setContext(context).draw();
+
+    var visibleNoteGroups = [];
+    var tempo = 120
+
+    window.soundsLike.addNote = function(freq, sec) {
+        var fnote = window.Tone.Frequency(freq).toNote().toLowerCase();
+        var acc = fnote.match(/[a-z](.*)[0-9+]/)[1];
+        fnote = fnote.replace(/([0-9]+)/, '/$1');
+        var note = new VF.StaveNote({
+            clef: 'treble',
+            keys: [fnote],
+            duration: window.Tone.Time(sec).toNotation().match(/[0-9]+/)[0],
+        }).setContext(context).setStave(stave);
+        if (acc) {
+            note.addAccidental(0, new VF.Accidental(acc));
+        }
+        tickContext.addTickable(note);
+        tickContext.preFormat().setX(vfWidth - 100);
+        var group = context.openGroup();
+        visibleNoteGroups.push(group);
+        note.draw();
+        context.closeGroup();
+        group.classList.add('scroll');
+        var box = group.getBoundingClientRect();
+        group.classList.add('scrolling');
+
+        window.setTimeout(function() {
+            var index = visibleNoteGroups.indexOf(group);
+            if (index === -1) return;
+            group.classList.add('correct');
+            visibleNoteGroups.shift();
+        }, 5000);
+    };
+})(this, this.document);
 (window.onpopstate = function() {
     var match,
         pl     = /\+/g,
@@ -33,6 +79,7 @@ window.soundsLike = window.soundsLike || { urlParams: null };
         var sec = (data.msec || 500) / 1000;
         var synth;
 
+        window.clearTimeout(window.soundsLike.bgTimeout);
         if (data.src) {
             new window.Tone.Player({
                 url : '/file?src=' + data.src, autostart: true
@@ -40,9 +87,13 @@ window.soundsLike = window.soundsLike || { urlParams: null };
         } else {
             synth = new window.Tone.Synth().toMaster();
             synth.triggerAttackRelease(tone, sec);
+            window.soundsLike.addNote(tone, sec);
         }
         document.body.style.background =
             'hsl(' + (data.hue || tone % 360) + ',100%,50%)';
+        window.soundsLike.bgTimeout = setTimeout(function() {
+            document.body.style.background = 'white';
+        }, sec * 1000);
         if (data.msg) p.textContent = data.msg;
     }
 
